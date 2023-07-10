@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :movies, :only[index, show]
-  resources :favorites, :only[index, show, create, delete]
-  resources :users, :only[create]
-  resources :sessions, :only[create]
+  resources :movies, only: [:index, :show]
+  resources :favorites, only: [:index, :show, :create, :delete]
+  resources :users, only: [:create]
+  resources :sessions, only: [:create]
 end
