@@ -6,6 +6,16 @@ class FavoritesController < ApplicationController
     render json: @favorites
   end
 
+  def show
+    @favorite = Favorite.find_by(user_id: current_user, movie_id: params[:id])
+
+    if @favorite
+      render json: @favorite
+    else
+      render json: { error: "Favorite not found" }, status: :not_found
+    end
+  end
+
   def create
     @favorite = Favorite.new(user: current_user, movie_id: params[:movie_id])
 
